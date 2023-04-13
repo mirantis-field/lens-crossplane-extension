@@ -2,7 +2,6 @@ import { Renderer} from "@k8slens/extensions";
 
 export class Provider extends Renderer.K8sApi.KubeObject {
   static kind = "Provider";
-  static namespaced = true;
   static apiBase = "/apis/pkg.crossplane.io/v1/providers";
 
   kind!: string;

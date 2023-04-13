@@ -11,7 +11,6 @@ export class InstancesPage extends React.Component<{ extension: Renderer.LensExt
 
   render() {
     return (
-      <Renderer.Component.TabLayout>
         <Renderer.Component.KubeObjectListLayout
             tableId="InstancesTable"
             className="Instances" store={instanceStore}
@@ -29,7 +28,6 @@ export class InstancesPage extends React.Component<{ extension: Renderer.LensExt
               instance.getName(),
             ]}
         />
-      </Renderer.Component.TabLayout>
     ) 
   }
 }

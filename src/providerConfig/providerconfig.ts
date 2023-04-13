@@ -1,16 +1,16 @@
 import { Renderer} from "@k8slens/extensions";
 
-export class Instance extends Renderer.K8sApi.KubeObject {
-  static kind = "Instance";
-  static apiBase = "/apis/compute.openstack.upbound.io/v1alpha1/instancev2s";
+export class ProviderConfig extends Renderer.K8sApi.KubeObject {
+  static kind = "ProviderConfig";
+  static apiBase = "/apis/openstack.upbound.io/v1beta1/providerconfigs";
 
   kind!: string;
   apiVersion!: string;
-  metadata!: InstanceMetadata; 
-  spec!: InstanceSpec;
+  metadata!: ProviderConfigMetadata; 
+  spec!: ProviderSpec;
 }
 
-export type InstanceMetadata = {
+export type ProviderConfigMetadata = {
   name: string;
   namespace: string;
   selfLink: string;
@@ -25,6 +25,6 @@ export type InstanceMetadata = {
   };
 };
 
-export type InstanceSpec = {
+export type ProviderSpec = {
   package: string;
 };

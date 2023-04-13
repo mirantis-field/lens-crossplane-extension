@@ -6,7 +6,7 @@ import { ProvidersConfigPage } from "./src/pages/providerconfig-page";
 
 
 const enum id {
-  vms = "vms",
+  instance = "instance",
   provider = "provider",
   providerConfig = "providerConfig"
 }
@@ -35,7 +35,7 @@ export default class CrossplaneExtension extends Renderer.LensExtension {
 
     clusterPages = [
       {
-        id: id.vms,
+        id: id.instance,
         components: {
           Page: () => <InstancesPage extension={this}/>,
         }
@@ -49,7 +49,7 @@ export default class CrossplaneExtension extends Renderer.LensExtension {
       {
         id: id.providerConfig,
         components: {
-          Page: () => <ProvidersPage extension={this}/>,
+          Page: () => <ProvidersConfigPage extension={this}/>,
         }
       }
     ];
@@ -64,7 +64,7 @@ export default class CrossplaneExtension extends Renderer.LensExtension {
       },
       {
         parentId: "crossplane",
-        target: {pageId: id.vms},
+        target: {pageId: id.instance},
         title: "Instances",
         components: {
           Icon: InstancesIcon

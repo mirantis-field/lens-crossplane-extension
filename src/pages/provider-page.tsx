@@ -29,7 +29,6 @@ export class ProvidersPage extends React.Component<{ extension: Renderer.LensExt
         ]}
         renderTableContents={(provider: Provider) => [
           provider.getName()
-          //provider.spec.PACKAGE
         ]}
       />
     );

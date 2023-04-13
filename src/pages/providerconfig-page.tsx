@@ -1,12 +1,10 @@
 import { Renderer } from "@k8slens/extensions";
 import React from "react";
-import { Provider } from "../provider/provider"
-import { providerStore } from "../provider/provider-store";
+import { ProviderConfig } from "../providerconfig/providerConfig"
+import { providerConfigStore } from "../providerconfig/providerConfig-store";
 
 enum sortBy {
   name = "name",
-  provider = "provider",
-  age = "age"
 }
 
 export class ProvidersConfigPage extends React.Component<{ extension: Renderer.LensExtension }> {
@@ -14,22 +12,19 @@ export class ProvidersConfigPage extends React.Component<{ extension: Renderer.L
     return (
       <Renderer.Component.KubeObjectListLayout 
         tableId="providersTable"
-        className="Providers" store={ providerStore }
+        className="ProviderConfig" store={ providerConfigStore }
         sortingCallbacks={{
-          [sortBy.name]: (provider: Provider) => provider.getName(),
-          [sortBy.provider]: (provider: Provider) => provider.metadata.namespace,
+          [sortBy.name]: (provider: ProviderConfig) => provider.getName(),
         }}
         searchFilters={[
-          (provider: Provider) => provider.getSearchFields()
+          (providerConfig: ProviderConfig) => providerConfig.getSearchFields()
         ]}
-        renderHeaderTitle="Providers"
+        renderHeaderTitle="ProviderConfig"
         renderTableHeader={[
-          { title: "Name", className: "name", sortBy: sortBy.name },
-          { title: "Provider", className: "vendor", sortBy: sortBy.provider },              
+          { title: "Name", className: "name", sortBy: sortBy.name }
         ]}
-        renderTableContents={(provider: Provider) => [
-          provider.getName(),
-          //provider.spec.PACKAGE
+        renderTableContents={(providerConfig: ProviderConfig) => [
+          providerConfig.getName()
         ]}
       />
     );
